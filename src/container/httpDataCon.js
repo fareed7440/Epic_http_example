@@ -9,6 +9,7 @@ function mapStateToProps(state) {
     console.log('stateee',state)
     return {
         AllData: state.userReducer.userList,
+        postData : state.userReducer.POSTLIST
      
     };
 }
@@ -16,8 +17,13 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         fetchUserData : function (){
-          return dispatch(Actions.getData());
-        }
+          return dispatch(Actions.getData())
+        },
+          postdata : function (obj){
+              return dispatch(Actions.postData(obj));
+
+          }
+        
     };
 }
 
