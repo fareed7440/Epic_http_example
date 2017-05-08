@@ -34,6 +34,7 @@ class UserData extends Component {
   constructor(props) {
     super(props)
 
+
   }
 
 
@@ -61,6 +62,10 @@ handleInput =(e,v,i)=>{
 
 }
 
+deleteData=(_id)=>{
+this.props.Delletion(_id)
+console.log('propssss',this.props.Delletion(_id))
+}
 
 
   render() {
@@ -91,6 +96,8 @@ handleInput =(e,v,i)=>{
 
                     <TableHeaderColumn style={{ color: "#7B1FA2" }}>messages</TableHeaderColumn>
                     <TableHeaderColumn style={{ color: "#7B1FA2" }}> id</TableHeaderColumn>
+                       <TableHeaderColumn style={{ color: "#7B1FA2" }}> dalete</TableHeaderColumn>
+
 
 
                   </TableRow>
@@ -102,6 +109,7 @@ handleInput =(e,v,i)=>{
                       <TableRow key={i} >
                         <TableRowColumn key={i}>{val.text}</TableRowColumn>
                         <TableRowColumn key={i}>{val._id}</TableRowColumn>
+                     <RaisedButton label="Delete" onClick={() => { this.deleteData() }} primary={true}/>
 
 
 

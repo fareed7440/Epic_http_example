@@ -13,7 +13,8 @@ export const rootReducer = combineReducers({
 
 export const rootEpic = combineEpics(
     UserEpic.getUserData,
-UserEpic.getPostData
+UserEpic.getPostData,
+UserEpic.deleteFunct
 )
 
 const epicMiddleware = createEpicMiddleware(rootEpic);

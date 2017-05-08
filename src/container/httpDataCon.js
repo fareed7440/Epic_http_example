@@ -9,7 +9,8 @@ function mapStateToProps(state) {
     console.log('stateee',state)
     return {
         AllData: state.userReducer.userList,
-        postData : state.userReducer.POSTLIST
+        postData : state.userReducer.POSTLIST,
+        delete : state.userReducer.DeleteList
      
     };
 }
@@ -22,6 +23,9 @@ function mapDispatchToProps(dispatch) {
           postdata : function (obj){
               return dispatch(Actions.postData(obj));
 
+          },
+          Delletion :function (_id){
+              return dispatch(Actions.Delete(_id))
           }
         
     };
