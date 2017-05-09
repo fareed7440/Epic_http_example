@@ -23,7 +23,7 @@ function userReducer(state = initialState , action) {
 
 
    case Actions.DELETEREQUESTSUCCESS : 
-   return {... state , DeleteList : action.Delete}
+   return {... state , DeleteList : action.Delete[0]}
   
             // var state9 = Object.assign({},state,{userData:action.data})
             // state = state9

@@ -62,7 +62,8 @@ handleInput =(e,v,i)=>{
 
 }
 
-deleteData=(_id)=>{
+deleteData=(_id,todo,req)=>{
+   _id: req.params.todo_id
 this.props.Delletion(_id)
 console.log('propssss',this.props.Delletion(_id))
 }
@@ -109,7 +110,7 @@ console.log('propssss',this.props.Delletion(_id))
                       <TableRow key={i} >
                         <TableRowColumn key={i}>{val.text}</TableRowColumn>
                         <TableRowColumn key={i}>{val._id}</TableRowColumn>
-                     <RaisedButton label="Delete" onClick={() => { this.deleteData() }} primary={true}/>
+                     <RaisedButton label="Delete" onClick={(_id) => { this.props.Delletion(_id)}} primary={true}/>
 
 
 

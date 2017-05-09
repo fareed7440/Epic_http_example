@@ -41,11 +41,11 @@ export default class UserEpic {
     }
 
 
-    static deleteFunct(action$, id) {
+    static DeleteFunction(action$,_id) {
     return action$.ofType(Actions.DELETEREQUEST)
                .map(action => action.payload)
               .switchMap(data =>
-                Observable.ajax({ url: 'http://localhost:8080/api/todos : id', body: { text: data.id }, headers: { "Content-Type": 'application/json' }, method: 'delete' }))
+                Observable.ajax({ url: 'http://localhost:8080/api/todos : id', body: { text: _id }, headers: { "Content-Type": 'application/json' }, method: 'delete' }))
                 .switchMap((deleteData) => {
                 console.log('Deleteee data', deleteData)
                 var arr2 = [];
