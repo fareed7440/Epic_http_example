@@ -6,18 +6,13 @@ export default class Actions  {
    static DELETEREQUEST = 'DELETEREQUEST';
    static DELETEREQUESTSUCCESS = 'DELETEREQUESTSUCCESS';
    
-static Delete(){
+static DeleteData(){
     return{
         type : Actions.DELETEREQUEST
     }
 }
 
-static  DeleteSuccess(_id){
-    return{
-        type  : Actions.DELETEREQUESTSUCCESS,
-        payload : _id
-    }
-}
+
     static getData(){
         return { 
             type: Actions.HTTPREQUEST
@@ -42,6 +37,11 @@ static getPostDataSuccess(postList){
     }
 }
 
-
+static  DeleteSuccess(id){
+    return{
+        type  : Actions.DELETEREQUESTSUCCESS,
+        payload : id
+    }
+}
 
 }

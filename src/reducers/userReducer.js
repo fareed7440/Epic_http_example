@@ -5,7 +5,7 @@ import Actions from '../store/actions/actionTpye'
 const initialState = {
     userList: [],
     POSTLIST:[],
-        Delete : [],
+        DeleteList : [],
 
 }
 
@@ -22,12 +22,19 @@ function userReducer(state = initialState , action) {
    return {... state ,POSTLIST:action.postList}
 
 
-   case Actions.DELETEREQUESTSUCCESS : 
-   return {... state , DeleteList : action.Delete[0]}
+   
+
+   case Actions.DELETEREQUESTSUCCESS : {
+      var loginState = Object.assign({}, state, { DeleteList: action.payload })
+      state = loginState
+      return state;
+
+
+    }
+
+
   
-            // var state9 = Object.assign({},state,{userData:action.data})
-            // state = state9
-            // return state;
+           
         
   default:
     return state

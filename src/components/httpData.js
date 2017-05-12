@@ -23,7 +23,6 @@ const style = {
   display: 'inline-block',
 };
 const styles = {
-  height: 400,
   width: 800,
   margin: 20,
   textAlign: 'center',
@@ -33,47 +32,51 @@ class UserData extends Component {
 
   constructor(props) {
     super(props)
-
+    this.deleteData = this.deleteData.bind(this);
 
   }
 
-
-handleForm = (e,v)=>{
-  e.preventDefault();
-  let msg = this.refs.msg.getValue();
-  let obj = {
-    msg : msg
+  checkMe() {
+    console.log("i am hitting");
   }
-  console.log('obbbbbj',obj)
-  this.props.postdata (obj)
-}
 
 
-handleInput =(e,v,i)=>{
+  handleForm = (e, v) => {
+    e.preventDefault();
+    let msg = this.refs.msg.getValue();
+    let obj = {
+      msg: msg
+    }
+    console.log('obbbbbj', obj)
+    this.props.postdata(obj)
+  }
 
-         const target = e.target;
-        const value = target.type === 'checked' ? target.checked : target.value;
-        const name = target.name;
+
+  handleInput = (e, v, i) => {
+
+    const target = e.target;
+    const value = target.type === 'checked' ? target.checked : target.value;
+    const name = target.name;
 
 
-        this.setState({
-            [name]: value
-        })
+    this.setState({
+      [name]: value
+    })
 
-}
+  }
 
-deleteData=(_id,todo,req)=>{
-   _id: req.params.todo_id
-this.props.Delletion(_id)
-console.log('propssss',this.props.Delletion(_id))
-}
+  deleteData = (id) => {
+    console.log('element ki id', id)
+
+ this.props.Delletion(id);
+  
+   
+  }
 
 
   render() {
     const userData = this.props && this.props.AllData && this.props.AllData ? this.props.AllData : [];
     console.log('daataaaaaaa', userData)
-   // const post = this.props && this.props.postData && this.props.postData ? this.props.postData : [];
-  //  console.log('posttttt', post)
     return (
       <div >
         <div>
@@ -83,12 +86,13 @@ console.log('propssss',this.props.Delletion(_id))
 
 
 
-          />
+          ><RaisedButton primary={true} onClick={this.props.fetchUserData} label="FetchData" style={styless} /><br /><br />
+
+</AppBar>
+
           <center>
-            <RaisedButton primary={true} onClick={this.props.fetchUserData} label="FetchData" style={styless} /><br /><br />
-
-
-
+            
+<form onSubmit={this.handleForm}>
             <Paper style={styles} zDepth={4} >
 
               <Table adjustForCheckbox={false} displayRowCheckbox={false}>
@@ -97,7 +101,7 @@ console.log('propssss',this.props.Delletion(_id))
 
                     <TableHeaderColumn style={{ color: "#7B1FA2" }}>messages</TableHeaderColumn>
                     <TableHeaderColumn style={{ color: "#7B1FA2" }}> id</TableHeaderColumn>
-                       <TableHeaderColumn style={{ color: "#7B1FA2" }}> dalete</TableHeaderColumn>
+                    <TableHeaderColumn style={{ color: "#7B1FA2" }}> dalete</TableHeaderColumn>
 
 
 
@@ -110,7 +114,11 @@ console.log('propssss',this.props.Delletion(_id))
                       <TableRow key={i} >
                         <TableRowColumn key={i}>{val.text}</TableRowColumn>
                         <TableRowColumn key={i}>{val._id}</TableRowColumn>
-                     <RaisedButton label="Delete" onClick={(_id) => { this.props.Delletion(_id)}} primary={true}/>
+
+
+                        {/*<TableRowColumn><RaisedButton label="Delete" onClick={this.props.Delletion()} primary={true} /></TableRowColumn>*/}
+
+                        {/*<RaisedButton label="Delete" onClick={this.checkMe()} primary={true} />*/}
 
 
 
@@ -126,18 +134,18 @@ console.log('propssss',this.props.Delletion(_id))
 
 
             <br />
-            <form onSubmit = {this.handleForm}>
-            <TextField
-              hintText="Add Text"
-              name='msg'
-              onChange = {this.handleInput}
-              ref='msg'
-              type='text'
-              floatingLabelText="Floating Label Text"
-            /><br />
+            
+              <TextField
+                hintText="Add Text"
+                name='msg'
+                onChange={this.handleInput}
+                ref='msg'
+                type='text'
+                floatingLabelText="Floating Label Text"
+              /><br />
 
-            <RaisedButton label="Add" type = 'submit' primary={true} style={styless} /><br /><br />
-</form>
+              <RaisedButton label="Add" type='submit' primary={true} style={styless} /><br /><br />
+            </form>
           </center>
 
 
